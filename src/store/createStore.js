@@ -1,6 +1,6 @@
 export const createStore = (reducer, initialState) => {
   let currentState = initialState;
-  const listeners = [];
+  let listeners = [];
 
   const getState = () => currentState;
   const dispatch = action => {
@@ -8,7 +8,12 @@ export const createStore = (reducer, initialState) => {
     listeners.forEach(listener => listener());
   };
 
-  const subscribe = listener => listeners.push(listener);
+  const subscribe = fn => {
+    listeners = [...listeners, fn];
+    return () => {
+      listeners = listeners.filter(listner => listner !== fn);
+    };
+  };
 
   return { getState, dispatch, subscribe };
 };

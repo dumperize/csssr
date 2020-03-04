@@ -1,20 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-class Provider extends React.Component {
-  getChildContext() {
-    return {
-      store: this.props.store
-    };
-  }
+export const SlomuxContext = React.createContext(null);
 
-  render() {
-    return React.Children.only(this.props.children);
-  }
-}
-
-Provider.childContextTypes = {
-  store: PropTypes.object
+const Provider = ({ store, children }) => {
+  return (
+    <SlomuxContext.Provider value={store}>{children}</SlomuxContext.Provider>
+  );
 };
 
 export default Provider;

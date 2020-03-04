@@ -14,10 +14,10 @@ const Interval = ({ interval, changeInterval }) => {
   );
 };
 
-const putStateToProps = state => ({
+const mapStateToProps = state => ({
   interval: state.interval
 });
-const putActionsToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   changeInterval: value => dispatch(changeInterval(value))
 });
-export default connect(putStateToProps, putActionsToProps)(Interval);
+export default connect(mapStateToProps, mapDispatchToProps)(Interval);

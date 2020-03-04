@@ -11,7 +11,7 @@ function reducer(state = initialState, action) {
         state.interval + action.payload > 0
           ? state.interval + action.payload
           : 0;
-      return { state, interval: newInterval };
+      return { ...state, interval: newInterval };
   }
   return state;
 }
