@@ -60,10 +60,10 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
-const putStateToProps = state => {
+const mapStateToProps = state => {
   return {
     interval: state.interval
   };
 };
 
-export default connect(putStateToProps, () => {})(Timer);
+export default connect(mapStateToProps, () => {})(Timer);
